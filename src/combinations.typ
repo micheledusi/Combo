@@ -83,7 +83,7 @@
 // -> array(array(int | any))
 #let get-combinations-with-repetition(
 	// The array of distinct items, or the total number of distinct items.
-	// Both an array and an integer are accepted. In the case of an array, its length is used. In the case of an integer, it must be a non-negative integer.
+	// Both an array and an integer are accepted. In the case of an integer, it is interpreted as the total number of distinct items from $0$ to $n-1$. 
 	// -> int | array
 	items, 
 	// The number of items to choose, among the $n$ distinct items.
@@ -125,7 +125,7 @@
 // -> array(array(int | any))
 #let get-combinations-no-repetition(
 	// The array of distinct items, or the total number of distinct items.
-	// Both an array and an integer are accepted. In the case of an array, its length is used. In the case of an integer, it must be a non-negative integer.
+	// Both an array and an integer are accepted. In the case of an integer, it is interpreted as the total number of distinct items from $0$ to $n-1$. 
 	// -> int | array
 	items, 
 	// The number of items to choose, among the $n$ distinct items.
@@ -172,7 +172,7 @@
 // -> array(array(int | any))
 #let get-combinations(
 	// The array of distinct items, or the total number of distinct items.
-	// Both an array and an integer are accepted. In the case of an array, its length is used. In the case of an integer, it must be a non-negative integer.
+	// Both an array and an integer are accepted. In the case of an integer, it is interpreted as the total number of distinct items from $0$ to $n-1$. 
 	// -> int | array
 	items, 
 	// The number of items to choose, among the $n$ distinct items.
