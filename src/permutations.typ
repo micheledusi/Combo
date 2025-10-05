@@ -177,19 +177,58 @@
 	// Handle edge cases
 	if k > n or n <= 0 or k < 0 {
 		return () // Empty array
+
 	} else if k == 0 {
-		return ((),) // Array with one empty array
-	} 
-	
-	// 1) We first generate all combinations of size "k" for indices from 0 to n-1
-	// Note: if k == n, this step returns a single combination with all elements
-	let combinations = get-combinations-no-repetition(n, k)
-	// 2) For each combination, we generate all permutations of that combination
-	let permutations = combinations.map(permute-sorted-array-without-repetitions).join()
-	// FIXME: THIS IS NOT GIVING THE RIGHT ORDER FOR k < n !!!
-	if type(items) == array {
-		return permutations.map(comb => {return comb.map(i => items.at(i))})
+		// Special case: only one permutation, the empty permutation
+		return ((),)
+		
+	} else if k == 1 {
+		// Special case: each permutation is a single element
+		if type(items) == array {
+			return items.map(i => (i,))
+		} else {
+			return range(n).map(i => (i,))
+		}
+
+	} else if k == 2 {
+		// Special case: generate all permutations of pairs
+		let arr = if type(items) == array {items} else {array(range(n))}
+		let permutations_of_pairs = ()
+		for i in range(n) {
+			for j in range(n) {
+				if i != j {
+					permutations_of_pairs.push((arr.at(i), arr.at(j)))
+				}
+			}
+		}
+		return permutations_of_pairs
+
+	} else if k == n {
+		// Special case: generate all permutations of the entire set
+		let arr = if type(items) == array {items} else {array(range(n))}
+		return permute-sorted-array-without-repetitions(arr)
+		
+	} else if k == n - 1 {
+		// Special case: generate all permutations of the entire set, with the last element removed
+		let arr = if type(items) == array {items} else {array(range(n))}
+		let remove-last-element(arr) = arr.slice(0, -1)
+		return permute-sorted-array-without-repetitions(arr).map(remove-last-element)
+
 	} else {
+		// General case: k € [3; n-2] inclusive
+		let permutations_k_minus_1 = get-permutations-no-repetition(items, k: k - 1)
+		items = if type(items) == array {itemstr} else {array(range(n))}
+
+		// For each element in the array, we append it to each permutation of size k-1 that does not already contain it
+		let permutations = permutations_k_minus_1.map(p => {
+			let added_perms = ()
+			for i in items {
+				if not i in p {
+					added_perms.push(p + (i,))
+				}
+			}
+			return added_perms
+		}).join()
 		return permutations
 	}
 }
