@@ -309,3 +309,5 @@ Made something cool with _Combo_? Let me know — I’d love to feature your wor
 
 ### Credits
 This package is created by [Michele Dusi](https://github.com/micheledusi) and is licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html).
+
+Don't forget to read the [*Combo Manual*](/docs/manual-combo.pdf) for the complete documentation!
