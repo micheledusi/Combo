@@ -11,4 +11,4 @@ repository = "https://github.com/micheledusi/Combo"
 keywords = ["combinatorics", "combinations", "permutations", "binomial", "factorial", "math", "mathematics"]
 categories = ["scripting", "utility"]
 disciplines = ["computer-science", "mathematics"]
-exclude = ["/examples/*", "/tests/*", "/docs/*", ".git"]
+exclude = ["/examples/*", "/tests/*", "/docs/*", ".git", ".gitignore"]
